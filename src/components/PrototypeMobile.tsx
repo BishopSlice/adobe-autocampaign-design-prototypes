@@ -51,10 +51,6 @@ export function PrototypeMobile({
         <h1 className="text-[27px] font-extrabold leading-none tracking-tight text-on-surface">
           Auto Campaign
         </h1>
-        <p className="mx-auto mt-2 max-w-[46ch] text-[13px] leading-relaxed text-on-surface-muted">
-          Express turns your booking calendar into a continuous campaign that boosts customer
-          conversion.
-        </p>
       </header>
 
       <div className="mt-4 flex items-center justify-between gap-2.5 px-5">

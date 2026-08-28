@@ -91,8 +91,7 @@ export function AnnouncementPage({ onSeePrototype }: { onSeePrototype: () => voi
       {/* Phone: one viewport, no scroll. Screen flexes into whatever is left. */}
       <div className="flex h-[calc(100vh-3.5rem)] flex-col px-6 pb-7 pt-8 lg:hidden">
         <div className="flex-shrink-0 text-center">
-          <Eyebrow />
-          <h1 className="mt-3.5 text-5xl font-extrabold leading-none tracking-tight text-on-surface">
+          <h1 className="text-5xl font-extrabold leading-none tracking-tight text-on-surface">
             {announcement.title}
           </h1>
           <p className="mt-2.5 whitespace-nowrap text-sm font-medium text-on-surface">
