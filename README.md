@@ -2,7 +2,7 @@
 
 A concept for Adobe Express: turn a solo business owner's booking calendar into a self-running social campaign she only has to approve.
 
-This repo holds the site presenting that work. **Announcement** pitches the feature the way Adobe would, with the user and her frictions inside a modal. **Prototype** holds 18 screens across desktop and mobile. The design system opens in-app.
+This repo holds the site presenting that work. **Announcement** pitches the feature the way Adobe would, with the user and her frictions in a modal. **Prototype** holds 18 screens across desktop and mobile. The design system opens in-app.
 
 ## The bet
 
@@ -15,7 +15,7 @@ Her calendar already holds the answer. An empty Saturday 9am slot is a marketing
 **1. Pick one user, not a segment**
 Goal: a constraint sharp enough to settle arguments.
 Options: a composite of small business types, or one named person.
-Chose one. "Sonal has 90 seconds between classes" kills a feature debate faster than any persona deck.
+Chose one. "Sonal has 90 seconds between classes" settles a debate faster than any persona deck.
 
 **2. Find the real bottleneck**
 Goal: aim the AI at the expensive part.
@@ -25,12 +25,12 @@ Chose upstream. Her hard parts are deciding what to post and knowing if it worke
 **3. Systematize before drawing**
 Goal: one source of truth for both the prototype and the site.
 Options: design screens first and extract patterns later, or tokens upfront.
-Chose upfront. Tokens came from real Express surfaces into `docs/design.md`. Changing a value changes both.
+Chose upfront. Tokens came from real Express surfaces into `docs/design.md`, so changing a value changes both.
 
 **4. Review, not autonomy**
 Goal: prove the loop is worth building.
 Options: a generation surface with prompt controls, or an approval queue.
-Chose the queue. An off-brand post costs more than a good one earns, so nothing publishes without a human yes.
+Chose the queue. An off-brand post costs more than a good one earns, so nothing publishes without a yes.
 
 **5. Build every blocked state**
 Goal: make the agent credible when it cannot act.
@@ -38,9 +38,9 @@ Options: ship the four happy-path screens, or all of them.
 Chose all. 14 of 18 screens are disconnected, syncing, or failed. An agent is defined by what it does at 2am when the calendar stops responding.
 
 **6. Present it in code**
-Goal: show the work without it being mistaken for the product.
+Goal: show the work, not a picture of it.
 Options: static comps, or a real front end.
-Chose code. Motion is part of the argument: autoplay that yields to any input, rotating sets pinned to fixed heights so nothing reflows, hover swapped for a timer where there is no pointer to hover with.
+Chose code. Motion is part of the argument: autoplay that yields to any input, rotating sets at fixed heights so nothing reflows, hover swapped for a timer where there is no pointer.
 
 ## Run it
 
