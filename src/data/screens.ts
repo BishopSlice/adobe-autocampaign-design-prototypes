@@ -467,3 +467,110 @@ export function categorizeScreen(screen: Screen): { story: StoryId[]; edge: Edge
 
   return { story, edge };
 }
+
+/* ------------------------------------------------------------------ *
+ * Facets
+ *
+ * The screen set is a sparse matrix of story x state. Naming both makes
+ * the narrow layout navigable without an eleven item scroller, and lets
+ * story and state stay lit at the same time.
+ * ------------------------------------------------------------------ */
+
+export type StateId = 'live' | 'disconnected' | 'syncing' | 'error';
+
+export type Facet = {
+  id: string;
+  /** Chip label. Short enough for four across a phone. */
+  short: string;
+  /** Full name, used in the caption under the screen. */
+  label: string;
+  description: string;
+};
+
+export const storyFacets: Record<Device, Facet[]> = {
+  mobile: [
+    { id: 'connections', short: 'Connect', label: 'Connections', description: 'Seamlessly connect my Instagram and booking app.' },
+    { id: 'approvals', short: 'Approve', label: 'Approval Queue', description: 'Quickly review, approve, edit or skip the suggested posts.' },
+    { id: 'insights', short: 'Insights', label: 'Insights', description: 'Track performance of my posts.' },
+    { id: 'edit', short: 'Edit', label: 'Edit Draft', description: 'Adjust the caption, schedule, or image before it goes out.' },
+  ],
+  desktop: [
+    { id: 'intro', short: 'Intro', label: 'Feature Intro', description: 'Where Auto Campaign is found, inside the calendar she already uses.' },
+    { id: 'campaign', short: 'Feature Page', label: 'Feature Page', description: 'Connections, Approval Queue and Insights in one view.' },
+    { id: 'edit', short: 'Edit Draft', label: 'Edit Draft', description: 'Adjust the caption, schedule, or image before it goes out.' },
+  ],
+};
+
+const LIVE: Facet = {
+  id: 'live',
+  short: 'Live',
+  label: 'Live',
+  description: 'Both accounts connected, drafts generating on schedule against next week.',
+};
+const DISCONNECTED: Facet = {
+  id: 'disconnected',
+  short: 'Disconnected',
+  label: 'Disconnected',
+  description: 'Prompts reconnecting when an account is not linked.',
+};
+const SYNCING: Facet = {
+  id: 'syncing',
+  short: 'Syncing',
+  label: 'Syncing',
+  description: 'Shows sync progress while accounts and posts load.',
+};
+const ERRORED: Facet = {
+  id: 'error',
+  short: 'Error',
+  label: 'Error',
+  description: 'Flags exactly what failed and how to retry it. Already-approved posts still publish.',
+};
+
+export const stateFacets: Record<Device, Facet[]> = {
+  mobile: [LIVE, DISCONNECTED, ERRORED],
+  desktop: [LIVE, DISCONNECTED, SYNCING, ERRORED],
+};
+
+/** Which story and state a given screen sits at. */
+export function facetsOf(screen: Screen): { story: string; state: StateId } {
+  const id = screen.id;
+
+  let state: StateId = 'live';
+  if (id.includes('disconnected')) state = 'disconnected';
+  else if (id.includes('syncing')) state = 'syncing';
+  else if (id.includes('connection-error') || id.includes('draft-error')) state = 'error';
+
+  if (screen.device === 'desktop') {
+    if (id.includes('home')) return { story: 'intro', state };
+    if (id.includes('edit-draft')) return { story: 'edit', state };
+    return { story: 'campaign', state };
+  }
+
+  if (id.includes('edit-draft')) return { story: 'edit', state };
+  if (id.includes('approvals')) return { story: 'approvals', state };
+  if (id.includes('insights')) return { story: 'insights', state };
+  return { story: 'connections', state };
+}
+
+/**
+ * Index of the best screen for a facet pair. Falls back to the nearest
+ * match on the axis the visitor just changed, since the matrix is sparse:
+ * Insights has no Syncing screen, Edit Draft only exists live.
+ */
+export function findScreenIndex(
+  list: Screen[],
+  story: string,
+  state: StateId,
+  prefer: 'story' | 'state',
+): number {
+  const exact = list.findIndex((s) => {
+    const f = facetsOf(s);
+    return f.story === story && f.state === state;
+  });
+  if (exact >= 0) return exact;
+
+  const axis = list.findIndex((s) =>
+    prefer === 'story' ? facetsOf(s).story === story : facetsOf(s).state === state,
+  );
+  return axis >= 0 ? axis : 0;
+}
