@@ -6,7 +6,7 @@ import { useRotator } from '../hooks/useRotator';
  * sits below in a fixed slot, so advancing never moves the surrounding layout.
  */
 export function OutcomeStrip() {
-  const [index, setIndex] = useRotator(outcomes.length, 3000);
+  const [index, setIndex] = useRotator(outcomes.length, 5000);
 
   return (
     <div>

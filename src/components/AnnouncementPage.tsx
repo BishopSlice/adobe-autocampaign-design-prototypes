@@ -91,7 +91,7 @@ export function AnnouncementPage({ onSeePrototype }: { onSeePrototype: () => voi
       {/* Phone: one viewport, no scroll. Screen flexes into whatever is left. */}
       <div className="flex h-[calc(100vh-3.5rem)] flex-col px-6 pb-7 pt-8 lg:hidden">
         <div className="flex-shrink-0 text-center">
-          <h1 className="text-5xl font-extrabold leading-none tracking-tight text-on-surface">
+          <h1 className="whitespace-nowrap text-[clamp(2rem,11vw,3rem)] font-extrabold leading-none tracking-tight text-on-surface">
             {announcement.title}
           </h1>
           <p className="mt-2.5 whitespace-nowrap text-sm font-medium text-on-surface">
@@ -120,7 +120,7 @@ export function AnnouncementPage({ onSeePrototype }: { onSeePrototype: () => voi
       <div className="mx-auto hidden h-[calc(100vh-3.5rem)] w-full max-w-[1600px] items-center gap-14 px-16 lg:flex">
         <Reveal className="w-[46%] flex-shrink-0">
           <Eyebrow />
-          <h1 className="mt-5 text-7xl font-extrabold leading-none tracking-tight text-on-surface">
+          <h1 className="mt-5 whitespace-nowrap text-[clamp(3rem,5.2vw,4.5rem)] font-extrabold leading-none tracking-tight text-on-surface">
             {announcement.title}
           </h1>
           <p className="mt-4 text-2xl font-medium leading-snug text-on-surface">

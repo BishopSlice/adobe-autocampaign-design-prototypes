@@ -54,7 +54,7 @@ function FrictionsOnHover() {
 
 /** One card on a timer, with dots. Touch has no hover to reveal with. */
 function FrictionsOnTimer() {
-  const [index, setIndex] = useRotator(journey.length, 2000);
+  const [index, setIndex] = useRotator(journey.length, 5000);
   const stage = journey[index];
 
   return (

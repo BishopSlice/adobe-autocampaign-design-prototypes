@@ -47,13 +47,7 @@ export function PrototypeMobile({
 
   return (
     <div className="pb-10">
-      <header className="px-5 pt-6 text-center">
-        <h1 className="text-[27px] font-extrabold leading-none tracking-tight text-on-surface">
-          Auto Campaign
-        </h1>
-      </header>
-
-      <div className="mt-4 flex items-center justify-between gap-2.5 px-5">
+      <div className="flex items-center justify-between gap-2.5 px-5 pt-6">
         <DeviceToggle device={device} onChange={onDeviceChange} />
         <DesignSystemChip onOpen={onOpenDesignSystem} />
       </div>

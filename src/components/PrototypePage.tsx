@@ -242,7 +242,7 @@ export function PrototypePage() {
 
             <div className="w-44 flex-shrink-0 self-center xl:w-52">
               <CategoryList
-                title="Edge Cases"
+                title="State"
                 cards={edgeCards}
                 activeIds={category.edge ? [category.edge] : []}
               />
