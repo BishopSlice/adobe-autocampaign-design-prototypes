@@ -1,4 +1,6 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { type ReactNode } from 'react';
+import { Dialog } from './Dialog';
+import { CloseIcon } from './icons';
 
 type ModalProps = {
   open: boolean;
@@ -7,59 +9,27 @@ type ModalProps = {
   children: ReactNode;
 };
 
+/** A titled panel. Used for the design system viewer. */
 export function Modal({ open, onClose, title, children }: ModalProps) {
-  const closeRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-
-    closeRef.current?.focus();
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
-    }
-    window.addEventListener('keydown', onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', onKeyDown);
-    };
-  }, [open, onClose]);
-
-  if (!open) return null;
-
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8"
-      role="dialog"
-      aria-modal="true"
-      aria-label={title}
+    <Dialog
+      open={open}
+      onClose={onClose}
+      label={title}
+      panelClassName="flex h-full w-full flex-col overflow-hidden border border-border bg-surface shadow-lg sm:h-[85vh] sm:max-w-5xl sm:rounded-xl"
     >
-      <div
-        className="absolute inset-0 bg-primary/50 backdrop-blur-sm"
-        onClick={onClose}
-        aria-hidden="true"
-      />
-      <div className="relative flex h-[85vh] w-full max-w-5xl flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-lg">
-        <div className="flex items-center justify-between border-b border-border px-5 py-3">
-          <span className="text-sm font-semibold">{title}</span>
-          <button
-            ref={closeRef}
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-on-surface-muted hover:bg-surface-muted hover:text-on-surface"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M18 6L6 18" />
-              <path d="M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div className="flex-1 overflow-hidden">{children}</div>
+      <div className="flex flex-shrink-0 items-center justify-between border-b border-border px-5 py-3">
+        <span className="text-sm font-semibold">{title}</span>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close"
+          className="flex h-9 w-9 items-center justify-center rounded-full text-on-surface-muted hover:bg-surface-muted hover:text-on-surface"
+        >
+          <CloseIcon />
+        </button>
       </div>
-    </div>
+      <div className="flex-1 overflow-hidden">{children}</div>
+    </Dialog>
   );
 }

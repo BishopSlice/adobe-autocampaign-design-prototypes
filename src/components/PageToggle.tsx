@@ -1,4 +1,4 @@
-type Page = 'discovery' | 'prototype';
+type Page = 'announcement' | 'prototype';
 
 type PageToggleProps = {
   page: Page;
@@ -6,7 +6,7 @@ type PageToggleProps = {
 };
 
 const options: { id: Page; label: string }[] = [
-  { id: 'discovery', label: 'Discovery' },
+  { id: 'announcement', label: 'Announcement' },
   { id: 'prototype', label: 'Prototype' },
 ];
 
@@ -26,7 +26,7 @@ export function PageToggle({ page, onChange }: PageToggleProps) {
             role="tab"
             aria-selected={active}
             onClick={() => onChange(opt.id)}
-            className={`rounded-full px-6 py-2 text-sm font-semibold transition-colors ${
+            className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors sm:px-6 ${
               active ? 'bg-primary text-on-primary' : 'text-on-surface-muted hover:text-on-surface'
             }`}
           >

@@ -20,20 +20,6 @@ export default {
         success: '#1E8E5A',
         'success-muted': '#E5F5EE',
         bg: '#FAFAFA',
-
-        // Earthy palette, used on the Discovery page only.
-        earth: {
-          cream: '#FBF7F1',
-          sand: '#F1ECDF',
-          clay: '#F6EDE5',
-          terracotta: '#C0654A',
-          'terracotta-dark': '#A8523A',
-          olive: '#5C6647',
-          ochre: '#A67A3E',
-          ink: '#3A362F',
-          'ink-muted': '#6E6759',
-          line: '#E4DCCB',
-        },
       },
       keyframes: {
         'fade-up': {
@@ -54,8 +40,6 @@ export default {
       fontFamily: {
         sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
         mono: ['"IBM Plex Mono"', '"SFMono-Regular"', 'Consolas', 'monospace'],
-        display: ['Bungee', 'Arial Narrow', 'sans-serif'],
-        source: ['"Source Sans 3"', 'Inter', 'sans-serif'],
       },
       boxShadow: {
         sm: '0 1px 2px rgba(26,26,26,0.04), 0 1px 4px rgba(26,26,26,0.05)',
