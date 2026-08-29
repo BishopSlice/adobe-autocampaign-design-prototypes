@@ -12,35 +12,29 @@ Her calendar already holds the answer. An empty Saturday 9am slot is a marketing
 
 ## Process
 
-**1. Pick one user, not a segment**
-Goal: a constraint sharp enough to settle arguments.
-Options: a composite of small business types, or one named person.
-Chose one. "Sonal has 90 seconds between classes" settles a debate faster than any persona deck.
+### Stage 1: Feature discovery
 
-**2. Find the real bottleneck**
-Goal: aim the AI at the expensive part.
-Options: a better generator, or automate the decision upstream of it.
-Chose upstream. Her hard parts are deciding what to post and knowing if it worked. Generation sits between them and was never the constraint.
+**Customer segment value.** Solo business owners whose calendar is their revenue. One segment rather than a composite, so the constraint stays sharp.
 
-**3. Systematize before drawing**
-Goal: one source of truth for both the prototype and the site.
-Options: design screens first and extract patterns later, or tokens upfront.
-Chose upfront. Tokens came from real Express surfaces into `docs/design.md`, so changing a value changes both.
+**Persona.** Sonal, teaching yoga in Mumbai, 90 seconds between classes. A named person settles a debate faster than a deck.
 
-**4. Review, not autonomy**
-Goal: prove the loop is worth building.
-Options: a generation surface with prompt controls, or an approval queue.
-Chose the queue. An off-brand post costs more than a good one earns, so nothing publishes without a yes.
+**Pain points.** Deciding what to post, and knowing whether it worked. Generation sits between the two and was never the bottleneck.
 
-**5. Build every blocked state**
-Goal: make the agent credible when it cannot act.
-Options: ship the four happy-path screens, or all of them.
-Chose all. 14 of 18 screens are disconnected, syncing, or failed. An agent is defined by what it does at 2am when the calendar stops responding.
+**Expected outcomes.** Save time, grow reach, convert more. Booking rate is the number that matters, not likes.
 
-**6. Present it in code**
-Goal: show the work, not a picture of it.
-Options: static comps, or a real front end.
-Chose code. Motion is part of the argument: autoplay that yields to any input, rotating sets at fixed heights so nothing reflows, hover swapped for a timer where there is no pointer.
+**User stories.** Connect, approve, track. The same three words now run through the announcement, the story cards and the mobile tabs.
+
+### Stage 2: Iterate with coding agents and a design canvas
+
+**Design systems.** Tokens lifted from real Express surfaces into `docs/design.md` before any screen existed, so the prototype and the site read from one source.
+
+**Design taste.** Judged output against that system instead of taking the first pass. Blocked states got the same care as the happy path: 14 of 18 screens are disconnected, syncing, or failed.
+
+**Editing and regeneration.** Explored on the canvas, where a structure is cheap to throw away. Three mobile directions existed before one was chosen.
+
+**Frontend and UI engineering.** Built in React so motion is part of the argument. Rotating sets sit at fixed heights so nothing reflows, and hover swaps for a timer where there is no pointer.
+
+**Copywriting.** Adobe's own voice, checked against how Content Scheduler was announced. Second person, plain headline, one verb triplet.
 
 ## Run it
 

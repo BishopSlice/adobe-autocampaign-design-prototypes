@@ -6,17 +6,6 @@ import { PersonaModal } from './PersonaModal';
 import { Reveal } from './Reveal';
 import { ArrowRightIcon, ImageIcon } from './icons';
 
-function Eyebrow() {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full bg-accent-muted px-4 py-1.5">
-      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-      <span className="text-[11px] font-bold uppercase tracking-[0.09em] text-accent sm:text-xs">
-        {announcement.eyebrow}
-      </span>
-    </span>
-  );
-}
-
 function Screenshot({
   src,
   alt,
@@ -119,8 +108,7 @@ export function AnnouncementPage({ onSeePrototype }: { onSeePrototype: () => voi
       {/* Desktop: copy beside the screens, the whole thing in one viewport. */}
       <div className="mx-auto hidden h-[calc(100vh-3.5rem)] w-full max-w-[1600px] items-center gap-14 px-16 lg:flex">
         <Reveal className="w-[46%] flex-shrink-0">
-          <Eyebrow />
-          <h1 className="mt-5 whitespace-nowrap text-[clamp(3rem,5.2vw,4.5rem)] font-extrabold leading-none tracking-tight text-on-surface">
+          <h1 className="whitespace-nowrap text-[clamp(3rem,5.2vw,4.5rem)] font-extrabold leading-none tracking-tight text-on-surface">
             {announcement.title}
           </h1>
           <p className="mt-4 text-2xl font-medium leading-snug text-on-surface">

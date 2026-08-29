@@ -5,7 +5,6 @@ export type Capability = {
 };
 
 export const announcement = {
-  eyebrow: 'New in Adobe Express',
   title: 'Auto Campaign',
   /** Desktop has room for the full promise. Mobile needs it on one line. */
   subhead: 'Turn your booking calendar into a campaign that runs itself.',
