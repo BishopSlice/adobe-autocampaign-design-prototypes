@@ -2,7 +2,7 @@
 
 A concept for Adobe Express: turn a solo business owner's booking calendar into a self-running social campaign she only has to approve.
 
-This repo holds the site presenting that work. **Announcement** pitches the feature the way Adobe would, with the user and her frictions in a modal. **Prototype** holds 18 screens across desktop and mobile. The design system opens in-app.
+This repo holds the site presenting that work. **Announcement** pitches the feature the way Adobe would, with the user and her frictions in a modal. **Prototype** holds 18 screens across desktop and mobile.
 
 ## The bet
 
@@ -14,7 +14,7 @@ Her calendar already holds the answer. An empty Saturday 9am slot is a marketing
 
 ### Stage 1: Feature discovery
 
-**Customer segment value.** Solo business owners whose calendar is their revenue. One segment rather than a composite, so the constraint stays sharp.
+**Customer segment value.** Solo business owners whose calendar is their revenue. One segment, not a composite, so the constraint stays sharp.
 
 **Persona.** Sonal, teaching yoga in Mumbai, 90 seconds between classes. A named person settles a debate faster than a deck.
 
@@ -22,17 +22,17 @@ Her calendar already holds the answer. An empty Saturday 9am slot is a marketing
 
 **Expected outcomes.** Save time, grow reach, convert more. Booking rate is the number that matters, not likes.
 
-**User stories.** Connect, approve, track. The same three words now run through the announcement, the story cards and the mobile tabs.
+**User stories.** Connect, approve, track. The same three words run through the announcement, the story cards and the mobile tabs.
 
 ### Stage 2: Iterate with coding agents and a design canvas
 
-**Design systems.** Tokens lifted from real Express surfaces into `docs/design.md` before any screen existed, so the prototype and the site read from one source.
+**Design systems.** Read real Express surfaces and captured them as two mirrored files: `docs/design.md` holds the tokens an agent builds from, `docs/design.html` renders them live for a human. Names are semantic, so `on-primary` survives a palette change that `white` would not.
 
-**Design taste.** Judged output against that system instead of taking the first pass. Blocked states got the same care as the happy path: 14 of 18 screens are disconnected, syncing, or failed.
+**Design taste.** Judged against named heuristics, not the first pass. Every blocked state says what broke, what survives it, and the one fix. One red element per screen, so the break is unmissable.
 
-**Editing and regeneration.** Explored on the canvas, where a structure is cheap to throw away. Three mobile directions existed before one was chosen.
+**Editing and regeneration.** Explored on a canvas, where a structure is cheap to throw away. Three mobile directions existed before one was chosen.
 
-**Frontend and UI engineering.** Built in React so motion is part of the argument. Rotating sets sit at fixed heights so nothing reflows, and hover swaps for a timer where there is no pointer.
+**Frontend and UI engineering.** Composition over configuration: one dialog shell and one rotator hook serve every surface that needs them. Hover swaps for a timer where there is no pointer to hover with. Contrast, focus order and keyboard paths hold from 320px up.
 
 **Copywriting.** Adobe's own voice, checked against how Content Scheduler was announced. Second person, plain headline, one verb triplet.
 
