@@ -26,13 +26,16 @@ Her calendar already holds the answer. An empty Saturday 9am slot is a marketing
 
 ### Stage 2: Iterate with coding agents and a design canvas
 
-**Design systems.** Read real Express surfaces and captured them as two mirrored files: `docs/design.md` holds the tokens an agent builds from, `docs/design.html` renders them live for a human. Names are semantic, so `on-primary` survives a palette change that `white` would not.
+**Design systems.** Two mirrored files derived from real Express screenshots: `docs/design.md` carries the YAML tokens plus the reasoning behind them, and `docs/design.html` renders every token and component live in a browser.  
+Tokens are named semantically (`primary`, `on-primary`, `surface`, `accent`) rather than by appearance, so a coding agent implements from names and never guesses a hex.
 
-**Design taste.** Judged against named heuristics, not the first pass. Every blocked state says what broke, what survives it, and the one fix. One red element per screen, so the break is unmissable.
+**Design taste.** A craft layer over the style layer: one primary action per view, four designed states for every data surface (empty, loading, error, success), and errors that say what broke, why, and how to fix it.  
+Laws of UX cited by name where they drove a call, and any property the system lacked was added to it as a new token rather than inlined at the call site.
 
 **Editing and regeneration.** Explored on a canvas, where a structure is cheap to throw away. Three mobile directions existed before one was chosen.
 
-**Frontend and UI engineering.** Composition over configuration: one dialog shell and one rotator hook serve every surface that needs them. Hover swaps for a timer where there is no pointer to hover with. Contrast, focus order and keyboard paths hold from 320px up.
+**Frontend and UI engineering.** Composition over configuration, data kept separate from presentation, and one shared shell or hook wherever behaviour repeats instead of a variant flag.  
+WCAG 2.1 AA as the floor: keyboard operable throughout, labelled controls, focus moved and returned on dialogs, 4.5:1 text contrast, and layouts that hold from 320px up.
 
 **Copywriting.** Adobe's own voice, checked against how Content Scheduler was announced. Second person, plain headline, one verb triplet.
 
